@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net" modified="2025-09-03T00:00:00.000Z" agent="GPT-5 Thinking" version="20.8.7" editor="5.0.2" type="device">
+  <diagram id="ERD" name="ERD">
+    <mxGraphModel dx="1280" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="2" value="CLIENTES&#xa;PK id_cliente&#xa;rut&#xa;nombre&#xa;correo (UNIQUE)&#xa;telefono&#xa;fecha_alta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+  <mxGeometry x="20" y="40" width="280" height="170" as="geometry"/>
+</mxCell>
+<mxCell id="3" value="DIRECCIONES&#xa;PK id_direccion&#xa;FK id_cliente → clientes&#xa;calle&#xa;comuna&#xa;ciudad&#xa;notas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+  <mxGeometry x="350" y="40" width="300" height="170" as="geometry"/>
+</mxCell>
+<mxCell id="4" value="SOLICITUDES&#xa;PK id_solicitud&#xa;FK id_cliente → clientes&#xa;FK id_direccion → direcciones&#xa;fecha_solicitud&#xa;fecha_deseada&#xa;estado&#xa;descripcion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+  <mxGeometry x="700" y="40" width="320" height="190" as="geometry"/>
+</mxCell>
+<mxCell id="5" value="ARTICULOS&#xa;PK id_articulo&#xa;nombre (UNIQUE)&#xa;categoria&#xa;unidad (ENUM)&#xa;peligroso (bool)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+  <mxGeometry x="20" y="280" width="280" height="160" as="geometry"/>
+</mxCell>
+<mxCell id="6" value="ASIGNACIONES&#xa;PK id_asignacion&#xa;FK id_solicitud → solicitudes&#xa;FK id_vehiculo → vehiculos&#xa;FK id_conductor → conductores&#xa;inicio_programado&#xa;fin_programado&#xa;UNIQUE por franja" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+  <mxGeometry x="700" y="280" width="320" height="170" as="geometry"/>
+</mxCell>
+<mxCell id="7" value="RETIROS&#xa;PK id_retiro&#xa;FK id_solicitud → solicitudes&#xa;fecha_retiro&#xa;kg_totales&#xa;observaciones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+  <mxGeometry x="20" y="520" width="280" height="150" as="geometry"/>
+</mxCell>
+<mxCell id="8" value="ITEMS_RETIRO&#xa;PK id_item&#xa;FK id_retiro → retiros&#xa;FK id_articulo → articulos&#xa;cantidad&#xa;kg&#xa;UNIQUE(id_retiro,id_articulo)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+  <mxGeometry x="350" y="520" width="300" height="150" as="geometry"/>
+</mxCell>
+<mxCell id="9" value="VEHICULOS&#xa;PK id_vehiculo&#xa;patente (UNIQUE)&#xa;tipo (ENUM)&#xa;capacidad_kg&#xa;activo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+  <mxGeometry x="700" y="520" width="300" height="150" as="geometry"/>
+</mxCell>
+<mxCell id="10" value="CONDUCTORES&#xa;PK id_conductor&#xa;nombre&#xa;rut&#xa;licencia (ENUM)&#xa;activo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+  <mxGeometry x="1020" y="520" width="300" height="140" as="geometry"/>
+</mxCell>
+<mxCell id="11" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="2" target="3">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="12" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="2" target="4">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="13" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="3" target="4">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="14" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="4" target="6">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="15" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="9" target="6">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="16" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="10" target="6">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="17" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="4" target="7">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="18" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="7" target="8">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="19" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="5" target="8">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
